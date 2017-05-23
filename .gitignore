@@ -1,0 +1,13 @@
+env/
+dist/
+htmlcov/
+site/
+.tox/
+*.egg-info/
+__pycache__/
+.cache/
+.git/
+.idea/
+.coverage
+*.pyc
+*.log
