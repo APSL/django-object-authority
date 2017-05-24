@@ -1,10 +1,11 @@
 from django.core.management.base import BaseCommand
 
-from django_object_authority.apps import create_update_permissions
+from django_object_authority.utils import create_update_permissions
 
 
 APPS = 'applications'
 MODELS = 'models'
+PERMISSIONS = 'permissions'
 
 
 class Command(BaseCommand):
@@ -15,6 +16,8 @@ class Command(BaseCommand):
                             help="List of applications to create permissions of all their models.")
         parser.add_argument('-m', '--models', nargs='+', type=str, dest=MODELS, default=None,
                             help="List of models to create permissions.")
+        parser.add_argument('-n', '--new', nargs='+', type=str, dest=PERMISSIONS, default=None,
+                            help="List of new permission labels.")
 
     def handle(self, *args, **options):
         self.initialize(options)
@@ -30,6 +33,7 @@ class Command(BaseCommand):
         """Create permissions for all available application models."""
         self.stdout.write("Creating permissions...")
         created_perm, updated_perm = create_update_permissions(applications=getattr(self, APPS),
-                                                               models=getattr(self, MODELS))
+                                                               models=getattr(self, MODELS),
+                                                               permissions=getattr(self, PERMISSIONS))
         self.stdout.write("There are {} new permission and ignore {} because they already exist!".format(
             created_perm, updated_perm))

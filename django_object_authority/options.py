@@ -18,8 +18,5 @@ class BaseUserObjectAuthorization(BaseObjectAuthorization):
     def has_delete_permission(self, user, obj):
         return settings.AUTHORIZE_BY_DEFAULT
 
-    def has_list_permission(self, user, obj):
-        return settings.AUTHORIZE_BY_DEFAULT
-
     def has_view_permission(self, user, obj):
         return settings.AUTHORIZE_BY_DEFAULT

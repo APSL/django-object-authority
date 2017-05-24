@@ -2,6 +2,7 @@
 def register(*models, **kwargs):
     """
     Registers the given model(s) classes into authorization object:
+
     @authorizations.register(Project)
     class ProjectAuthorization(options.BaseObjectAuthorization):
         pass
