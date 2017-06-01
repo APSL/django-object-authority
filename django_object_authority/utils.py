@@ -34,19 +34,20 @@ def _create_permissions(model, permissions):
     from django.contrib.contenttypes.models import ContentType
 
     created, updated = 0, 0
-    for perm in permissions:
-        kwargs = {
-            'codename': "{}_{}".format(perm, model._meta.model_name),
-            'content_type': ContentType.objects.get_for_model(model)
-        }
-        defaults = {'name': "Can {} {}".format(perm.replace('_', ' '), model._meta.verbose_name)}
-        obj, _created = Permission.objects.get_or_create(defaults=defaults, **kwargs)
+    if permissions is not None:
+        for perm in permissions:
+            kwargs = {
+                'codename': "{}_{}".format(perm, model._meta.model_name),
+                'content_type': ContentType.objects.get_for_model(model)
+            }
+            defaults = {'name': "Can {} {}".format(perm.replace('_', ' '), model._meta.verbose_name)}
+            obj, _created = Permission.objects.get_or_create(defaults=defaults, **kwargs)
 
-        # count number of permission has created
-        if _created:
-            created += 1
-        else:
-            updated += 1
+            # count number of permission has created
+            if _created:
+                created += 1
+            else:
+                updated += 1
 
     return created, updated
 

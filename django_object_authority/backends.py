@@ -23,15 +23,6 @@ class ObjectAuthorityBackend(ModelBackend):
         if not user_obj.is_active or user_obj.is_anonymous or not all([perm, obj]):
             return False
 
-        if not settings.AUTHORIZE_ONLY_OBJECTS:
-            # validation class permission
-            class_permission_label = '_has_perm_cache_{}'.format(slugify(perm))
-            if not hasattr(user_obj, class_permission_label):
-                setattr(user_obj, class_permission_label, user_obj.has_perm(perm, None))
-            # break check if has not class permission
-            if not getattr(user_obj, class_permission_label, False):
-                return False
-
         # validation object permission
         obj_permission_label = '_has_perm_cache_{}_{}'.format(slugify(perm), obj.id)
         if not hasattr(user_obj, obj_permission_label):
