@@ -56,6 +56,11 @@ class ObjectAuthorityBackend(ModelBackend):
             if hasattr(model_permission, action_method_name):
                 return getattr(model_permission, action_method_name)(user=user_obj, obj=obj)
 
+        # check class permission if CHECK_PERMISSION_CLASS_BY_DEFAULT is True
+        if settings.CHECK_PERMISSION_CLASS_BY_DEFAULT:
+            return user_obj.has_perm(perm)
+
+        # otherwise check default object permission
         if hasattr(model_permission, 'has_object_permission'):
             return model_permission.has_object_permission(user_obj, obj)
 
