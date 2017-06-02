@@ -6,7 +6,7 @@ from .mixins import AuthorizationMixin
 from .options import BaseObjectAuthorization, BaseUserObjectAuthorization
 
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 
 default_app_config = 'django_object_authority.apps.DjangoObjectAuthorityConfig'
