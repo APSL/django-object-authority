@@ -5,7 +5,6 @@ from django_object_authority.settings import DEFAULT_PERMISSIONS
 
 def create_update_permissions(applications=None, models=None, permissions=None, **kwargs):
     created_perm, updated_perm = 0, 0
-
     available_models, available_applications = set(), set(apps.all_models.keys())
     if applications:
         available_applications = set(applications) & set(apps.all_models.keys())
@@ -17,8 +16,7 @@ def create_update_permissions(applications=None, models=None, permissions=None, 
         available_models.update(app_models)
 
     # Update default permissions with the list specified as parameter
-    if permissions:
-        permissions = list(permissions, ) + list(DEFAULT_PERMISSIONS)
+    permissions = DEFAULT_PERMISSIONS if not permissions else list(permissions, ) + list(DEFAULT_PERMISSIONS)
 
     for model in available_models:
         result = _create_permissions(model, permissions)
