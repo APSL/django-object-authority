@@ -26,7 +26,7 @@ First of all you should add `django_object_authority` to you `INSTALLED_APPS` se
 
     INSTALLED_APPS = (
         ...
-        'rest_framework',
+        'django_object_authority',
     )
 
 

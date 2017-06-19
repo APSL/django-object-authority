@@ -11,7 +11,11 @@ Welcome to django-object-authority's documentation!
 .. image:: https://img.shields.io/pypi/v/django-object-authority.svg
    :target: https://pypi.python.org/pypi/django-object-authority
 .. image:: https://readthedocs.org/projects/docs/badge/?version=latest
-   :target: https://docs.readthedocs.io/en/latest/?badge=latest
+   :target: http://django-object-authority.readthedocs.io/en/latest/
+
+Django-object-authority provides an authentication backend for Django applications. Furthermore expose
+a set of features for filtering queryset.
+
 
 **Documentation**:
 

@@ -18,7 +18,7 @@ The main function of it is to control the access on specific elements for a conc
 
 ## Documentation
 
-Online documentation is available at [https://docs.readthedocs.io](http://django-object-authority.readthedocs.io/en/latest/)
+Online documentation is available at [http://django-object-authority.readthedocs.io](http://django-object-authority.readthedocs.io/en/latest/)
 
 
 ## Features
